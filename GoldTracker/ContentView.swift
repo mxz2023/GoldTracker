@@ -52,6 +52,7 @@ final class GoldPriceViewModel: ObservableObject {
 
 struct ContentView: View {
     @StateObject private var viewModel = GoldPriceViewModel()
+    @StateObject private var liveManager = GoldLiveActivityManager()
 
     var body: some View {
         ZStack {
@@ -78,6 +79,9 @@ struct ContentView: View {
         }
         .onReceive(viewModel.timer) { _ in
             viewModel.refresh()
+            if let item = viewModel.items.first {
+                Task { await liveManager.update(with: item) }
+            }
         }
     }
 
@@ -108,6 +112,44 @@ struct ContentView: View {
             HStack(spacing: 12) {
                 capsuleTag(text: "单位：元/克")
                 capsuleTag(text: "趋势：实时波动")
+            }
+
+            HStack(spacing: 12) {
+                Button {
+                    guard let item = viewModel.items.first else { return }
+                    Task { await liveManager.startIfNeeded(with: item) }
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: "bolt.fill")
+                        Text("启动实时活动")
+                    }
+                    .font(.system(size: 12, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(
+                        Capsule()
+                            .fill(Color.white.opacity(0.12))
+                    )
+                }
+
+                Button {
+                    Task { await liveManager.end() }
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: "xmark")
+                        Text("结束实时活动")
+                    }
+                    .font(.system(size: 12, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.white.opacity(liveManager.isActive ? 0.9 : 0.5))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(
+                        Capsule()
+                            .fill(Color.white.opacity(0.08))
+                    )
+                }
+                .disabled(!liveManager.isActive)
             }
         }
         .padding(.horizontal, 20)

@@ -10,11 +10,25 @@ import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
+        SimpleEntry(
+            date: Date(),
+            configuration: ConfigurationAppIntent(),
+            institution: "上海黄金交易所",
+            symbol: "Au",
+            price: 568.40,
+            change: 1.25
+        )
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
+        SimpleEntry(
+            date: Date(),
+            configuration: configuration,
+            institution: "上海黄金交易所",
+            symbol: "Au",
+            price: 568.40,
+            change: 1.25
+        )
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
@@ -24,7 +38,17 @@ struct Provider: AppIntentTimelineProvider {
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
+            let basePrice = 566.0 + Double(hourOffset) * 0.4
+            let delta = Double.random(in: -1.6...1.8)
+            let price = basePrice + delta
+            let entry = SimpleEntry(
+                date: entryDate,
+                configuration: configuration,
+                institution: "上海黄金交易所",
+                symbol: "Au",
+                price: price,
+                change: delta
+            )
             entries.append(entry)
         }
 
@@ -39,19 +63,92 @@ struct Provider: AppIntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationAppIntent
+    let institution: String
+    let symbol: String
+    let price: Double
+    let change: Double
 }
 
 struct GoldActivitiesEntryView : View {
     var entry: Provider.Entry
+    @Environment(\.widgetFamily) private var family
+    private var backgroundColor: Color {
+        Color.black
+    }
 
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
+        VStack(alignment: .leading, spacing: family == .systemSmall ? 10 : 14) {
+            HStack(alignment: .top, spacing: 8) {
+                ZStack {
+                    Circle()
+                        .fill(Color(red: 0.97, green: 0.79, blue: 0.25).opacity(0.18))
+                        .frame(width: family == .systemSmall ? 30 : 38, height: family == .systemSmall ? 30 : 38)
+                    Text(entry.symbol)
+                        .font(.system(size: family == .systemSmall ? 12 : 14, weight: .bold, design: .rounded))
+                        .foregroundStyle(Color(red: 0.97, green: 0.79, blue: 0.25))
+                }
 
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(entry.institution)
+                        .font(.system(size: family == .systemSmall ? 12 : 16, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                    Text("黄金报价 元/克")
+                        .font(.system(size: family == .systemSmall ? 10 : 12, weight: .medium, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.6))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+                }
+
+                Spacer()
+
+                if family != .systemSmall {
+                    Text(entry.date, style: .time)
+                        .font(.system(size: 12, weight: .medium, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.6))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                }
+            }
+
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text(priceText(entry.price))
+                    .font(.system(size: family == .systemSmall ? 22 : 30, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.65)
+                Text(changeText(entry.change))
+                    .font(.system(size: family == .systemSmall ? 11 : 14, weight: .semibold, design: .rounded))
+                    .foregroundStyle(entry.change >= 0 ? Color(red: 0.52, green: 0.88, blue: 0.46) : Color(red: 0.96, green: 0.48, blue: 0.48))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+            }
+
+            if family == .systemSmall {
+                HStack(spacing: 6) {
+                    Image(systemName: "clock.fill")
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.6))
+                    Text(entry.date, style: .time)
+                        .font(.system(size: 10, weight: .medium, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.6))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+                }
+            }
         }
+        .padding(family == .systemSmall ? 12 : 16)
+        .containerBackground(backgroundColor, for: .widget)
+    }
+
+    private func priceText(_ value: Double) -> String {
+        "¥\(String(format: "%.2f", value))"
+    }
+
+    private func changeText(_ value: Double) -> String {
+        let sign = value >= 0 ? "+" : ""
+        return "\(sign)\(String(format: "%.2f", value))"
     }
 }
 
@@ -83,6 +180,6 @@ extension ConfigurationAppIntent {
 #Preview(as: .systemSmall) {
     GoldActivities()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-    SimpleEntry(date: .now, configuration: .starEyes)
+    SimpleEntry(date: .now, configuration: .smiley, institution: "上海黄金交易所", symbol: "Au", price: 568.40, change: 1.25)
+    SimpleEntry(date: .now, configuration: .starEyes, institution: "工商银行", symbol: "Au", price: 566.80, change: -0.85)
 }

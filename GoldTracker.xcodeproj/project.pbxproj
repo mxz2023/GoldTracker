@@ -6,14 +6,65 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		72ED5CEB2F36F160005850D8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72ED5CEA2F36F160005850D8 /* WidgetKit.framework */; };
+		72ED5CED2F36F160005850D8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72ED5CEC2F36F160005850D8 /* SwiftUI.framework */; };
+		72ED5CFE2F36F161005850D8 /* GoldActivitiesExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 72ED5CE82F36F160005850D8 /* GoldActivitiesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		72ED5CFC2F36F161005850D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72ED5C902F36D519005850D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72ED5CE72F36F160005850D8;
+			remoteInfo = GoldActivitiesExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		72ED5CFF2F36F161005850D8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				72ED5CFE2F36F161005850D8 /* GoldActivitiesExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		72ED5C982F36D519005850D8 /* GoldTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		72ED5CE82F36F160005850D8 /* GoldActivitiesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GoldActivitiesExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		72ED5CEA2F36F160005850D8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		72ED5CEC2F36F160005850D8 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		72ED5D022F36F161005850D8 /* Exceptions for "GoldActivities" folder in "GoldActivitiesExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 72ED5CE72F36F160005850D8 /* GoldActivitiesExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		72ED5C9A2F36D519005850D8 /* GoldTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = GoldTracker;
+			sourceTree = "<group>";
+		};
+		72ED5CEE2F36F160005850D8 /* GoldActivities */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				72ED5D022F36F161005850D8 /* Exceptions for "GoldActivities" folder in "GoldActivitiesExtension" target */,
+			);
+			path = GoldActivities;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +77,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72ED5CE52F36F160005850D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72ED5CED2F36F160005850D8 /* SwiftUI.framework in Frameworks */,
+				72ED5CEB2F36F160005850D8 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				72ED5C9A2F36D519005850D8 /* GoldTracker */,
+				72ED5CEE2F36F160005850D8 /* GoldActivities */,
+				72ED5CE92F36F160005850D8 /* Frameworks */,
 				72ED5C992F36D519005850D8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +103,18 @@
 			isa = PBXGroup;
 			children = (
 				72ED5C982F36D519005850D8 /* GoldTracker.app */,
+				72ED5CE82F36F160005850D8 /* GoldActivitiesExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		72ED5CE92F36F160005850D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				72ED5CEA2F36F160005850D8 /* WidgetKit.framework */,
+				72ED5CEC2F36F160005850D8 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +127,12 @@
 				72ED5C942F36D519005850D8 /* Sources */,
 				72ED5C952F36D519005850D8 /* Frameworks */,
 				72ED5C962F36D519005850D8 /* Resources */,
+				72ED5CFF2F36F161005850D8 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				72ED5CFD2F36F161005850D8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				72ED5C9A2F36D519005850D8 /* GoldTracker */,
@@ -69,6 +143,28 @@
 			productName = GoldTracker;
 			productReference = 72ED5C982F36D519005850D8 /* GoldTracker.app */;
 			productType = "com.apple.product-type.application";
+		};
+		72ED5CE72F36F160005850D8 /* GoldActivitiesExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72ED5D032F36F161005850D8 /* Build configuration list for PBXNativeTarget "GoldActivitiesExtension" */;
+			buildPhases = (
+				72ED5CE42F36F160005850D8 /* Sources */,
+				72ED5CE52F36F160005850D8 /* Frameworks */,
+				72ED5CE62F36F160005850D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				72ED5CEE2F36F160005850D8 /* GoldActivities */,
+			);
+			name = GoldActivitiesExtension;
+			packageProductDependencies = (
+			);
+			productName = GoldActivitiesExtension;
+			productReference = 72ED5CE82F36F160005850D8 /* GoldActivitiesExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +177,9 @@
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					72ED5C972F36D519005850D8 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					72ED5CE72F36F160005850D8 = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
@@ -100,12 +199,20 @@
 			projectRoot = "";
 			targets = (
 				72ED5C972F36D519005850D8 /* GoldTracker */,
+				72ED5CE72F36F160005850D8 /* GoldActivitiesExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		72ED5C962F36D519005850D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72ED5CE62F36F160005850D8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +229,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72ED5CE42F36F160005850D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		72ED5CFD2F36F161005850D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72ED5CE72F36F160005850D8 /* GoldActivitiesExtension */;
+			targetProxy = 72ED5CFC2F36F161005850D8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		72ED5CA12F36D51B005850D8 /* Debug */ = {
@@ -256,6 +378,7 @@
 				DEVELOPMENT_TEAM = 5TKVHWTT79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -288,6 +411,7 @@
 				DEVELOPMENT_TEAM = 5TKVHWTT79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -303,6 +427,66 @@
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		72ED5D002F36F161005850D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5TKVHWTT79;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GoldActivities/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GoldActivities;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jdjr.GoldTracker.GoldActivities;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		72ED5D012F36F161005850D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5TKVHWTT79;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GoldActivities/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GoldActivities;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jdjr.GoldTracker.GoldActivities;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
@@ -327,6 +511,15 @@
 			buildConfigurations = (
 				72ED5CA42F36D51B005850D8 /* Debug */,
 				72ED5CA52F36D51B005850D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72ED5D032F36F161005850D8 /* Build configuration list for PBXNativeTarget "GoldActivitiesExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72ED5D002F36F161005850D8 /* Debug */,
+				72ED5D012F36F161005850D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
