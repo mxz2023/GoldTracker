@@ -77,7 +77,7 @@ struct GoldActivitiesEntryView : View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: family == .systemSmall ? 10 : 14) {
+        VStack(alignment: .leading, spacing: family == .systemSmall ? 8 : 12) {
             HStack(alignment: .top, spacing: 8) {
                 ZStack {
                     Circle()
@@ -112,20 +112,22 @@ struct GoldActivitiesEntryView : View {
                 }
             }
 
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
-                Text(priceText(entry.price))
-                    .font(.system(size: family == .systemSmall ? 22 : 30, weight: .bold, design: .rounded))
-                    .foregroundStyle(.white)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.65)
-                Text(changeText(entry.change))
-                    .font(.system(size: family == .systemSmall ? 11 : 14, weight: .semibold, design: .rounded))
-                    .foregroundStyle(entry.change >= 0 ? Color(red: 0.52, green: 0.88, blue: 0.46) : Color(red: 0.96, green: 0.48, blue: 0.48))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-            }
-
             if family == .systemSmall {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(priceText(entry.price))
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                        .foregroundStyle(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.65)
+                    Text(changeText(entry.change))
+                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        .foregroundStyle(entry.change >= 0 ? Color(red: 0.52, green: 0.88, blue: 0.46) : Color(red: 0.96, green: 0.48, blue: 0.48))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                }
+                
+                Spacer(minLength: 0)
+                
                 HStack(spacing: 6) {
                     Image(systemName: "clock.fill")
                         .font(.system(size: 10, weight: .semibold))
@@ -137,9 +139,23 @@ struct GoldActivitiesEntryView : View {
                         .minimumScaleFactor(0.8)
                 }
             }
+            else {
+                HStack(alignment: .firstTextBaseline, spacing: 16) {
+                    Text(priceText(entry.price))
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                        .foregroundStyle(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.65)
+                    Text(changeText(entry.change))
+                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        .foregroundStyle(entry.change >= 0 ? Color(red: 0.52, green: 0.88, blue: 0.46) : Color(red: 0.96, green: 0.48, blue: 0.48))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                }
+            }
         }
-        .padding(family == .systemSmall ? 12 : 16)
-        .containerBackground(backgroundColor, for: .widget)
+        .frame(maxHeight: .infinity, alignment: .top)
+        .containerBackground(Color.black, for: .widget)
     }
 
     private func priceText(_ value: Double) -> String {
@@ -158,7 +174,6 @@ struct GoldActivities: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             GoldActivitiesEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
         }
     }
 }
