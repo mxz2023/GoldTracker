@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72387BBB2F389F2E001E2A5D /* GoldTracker Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 72387BB12F389F2C001E2A5D /* GoldTracker Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		72ED5CEB2F36F160005850D8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72ED5CEA2F36F160005850D8 /* WidgetKit.framework */; };
 		72ED5CED2F36F160005850D8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72ED5CEC2F36F160005850D8 /* SwiftUI.framework */; };
 		72ED5CFE2F36F161005850D8 /* GoldActivitiesExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 72ED5CE82F36F160005850D8 /* GoldActivitiesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		72387BB92F389F2E001E2A5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72ED5C902F36D519005850D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72387BB02F389F2C001E2A5D;
+			remoteInfo = "GoldTrackerWatch Watch App";
+		};
 		72ED5CFC2F36F161005850D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 72ED5C902F36D519005850D8 /* Project object */;
@@ -23,6 +31,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		72387BBF2F389F2E001E2A5D /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				72387BBB2F389F2E001E2A5D /* GoldTracker Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72ED5CFF2F36F161005850D8 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -37,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		72387BB12F389F2C001E2A5D /* GoldTracker Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GoldTracker Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72ED5C982F36D519005850D8 /* GoldTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72ED5CE82F36F160005850D8 /* GoldActivitiesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GoldActivitiesExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		72ED5CEA2F36F160005850D8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -54,6 +74,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		72387BB22F389F2C001E2A5D /* GoldTracker Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "GoldTracker Watch App";
+			sourceTree = "<group>";
+		};
 		72ED5C9A2F36D519005850D8 /* GoldTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = GoldTracker;
@@ -70,6 +95,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		72387BAE2F389F2C001E2A5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72ED5C952F36D519005850D8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -94,6 +126,7 @@
 			children = (
 				72ED5C9A2F36D519005850D8 /* GoldTracker */,
 				72ED5CEE2F36F160005850D8 /* GoldActivities */,
+				72387BB22F389F2C001E2A5D /* GoldTracker Watch App */,
 				72ED5CE92F36F160005850D8 /* Frameworks */,
 				72ED5C992F36D519005850D8 /* Products */,
 			);
@@ -104,6 +137,7 @@
 			children = (
 				72ED5C982F36D519005850D8 /* GoldTracker.app */,
 				72ED5CE82F36F160005850D8 /* GoldActivitiesExtension.appex */,
+				72387BB12F389F2C001E2A5D /* GoldTracker Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,6 +154,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		72387BB02F389F2C001E2A5D /* GoldTracker Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72387BBC2F389F2E001E2A5D /* Build configuration list for PBXNativeTarget "GoldTracker Watch App" */;
+			buildPhases = (
+				72387BAD2F389F2C001E2A5D /* Sources */,
+				72387BAE2F389F2C001E2A5D /* Frameworks */,
+				72387BAF2F389F2C001E2A5D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				72387BB22F389F2C001E2A5D /* GoldTracker Watch App */,
+			);
+			name = "GoldTracker Watch App";
+			packageProductDependencies = (
+			);
+			productName = "GoldTrackerWatch Watch App";
+			productReference = 72387BB12F389F2C001E2A5D /* GoldTracker Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 		72ED5C972F36D519005850D8 /* GoldTracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 72ED5CA32F36D51B005850D8 /* Build configuration list for PBXNativeTarget "GoldTracker" */;
@@ -128,11 +184,13 @@
 				72ED5C952F36D519005850D8 /* Frameworks */,
 				72ED5C962F36D519005850D8 /* Resources */,
 				72ED5CFF2F36F161005850D8 /* Embed Foundation Extensions */,
+				72387BBF2F389F2E001E2A5D /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				72ED5CFD2F36F161005850D8 /* PBXTargetDependency */,
+				72387BBA2F389F2E001E2A5D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				72ED5C9A2F36D519005850D8 /* GoldTracker */,
@@ -176,6 +234,9 @@
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					72387BB02F389F2C001E2A5D = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					72ED5C972F36D519005850D8 = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -200,11 +261,19 @@
 			targets = (
 				72ED5C972F36D519005850D8 /* GoldTracker */,
 				72ED5CE72F36F160005850D8 /* GoldActivitiesExtension */,
+				72387BB02F389F2C001E2A5D /* GoldTracker Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		72387BAF2F389F2C001E2A5D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72ED5C962F36D519005850D8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,6 +291,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		72387BAD2F389F2C001E2A5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72ED5C942F36D519005850D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,6 +315,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		72387BBA2F389F2E001E2A5D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72387BB02F389F2C001E2A5D /* GoldTracker Watch App */;
+			targetProxy = 72387BB92F389F2E001E2A5D /* PBXContainerItemProxy */;
+		};
 		72ED5CFD2F36F161005850D8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 72ED5CE72F36F160005850D8 /* GoldActivitiesExtension */;
@@ -247,6 +328,72 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		72387BBD2F389F2E001E2A5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5TKVHWTT79;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = GoldTrackerWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.jdjr.GoldTracker;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jdjr.GoldTracker.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		72387BBE2F389F2E001E2A5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5TKVHWTT79;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = GoldTrackerWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.jdjr.GoldTracker;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jdjr.GoldTracker.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
 		72ED5CA12F36D51B005850D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -501,6 +648,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		72387BBC2F389F2E001E2A5D /* Build configuration list for PBXNativeTarget "GoldTracker Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72387BBD2F389F2E001E2A5D /* Debug */,
+				72387BBE2F389F2E001E2A5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		72ED5C932F36D519005850D8 /* Build configuration list for PBXProject "GoldTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

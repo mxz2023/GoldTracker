@@ -79,6 +79,16 @@ struct ContentView: View {
         }
         .onReceive(viewModel.timer) { _ in
             viewModel.refresh()
+            let quotes = viewModel.items.map { item in
+                GoldQuote(
+                    name: item.name,
+                    symbol: item.shortName,
+                    price: item.price,
+                    change: item.change,
+                    updatedAt: Date()
+                )
+            }
+            GoldSharedStore.saveQuotes(quotes)
             if let item = viewModel.items.first {
                 Task { await liveManager.update(with: item) }
             }
