@@ -10,40 +10,61 @@ import Combine
 
 final class WatchGoldViewModel: ObservableObject {
     @Published var quotes: [GoldQuote] = []
+    @Published var isUsingSharedData = false
+    @Published var lastWrite: Date? = nil
+    @Published var lastCount: Int = 0
 
-    private var timer: Timer?
-
-    func start() {
-        stop()
-        refresh()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            self?.refresh()
-        }
-    }
-
-    func stop() {
-        timer?.invalidate()
-        timer = nil
-    }
-
-    @MainActor
     func refresh() {
         let loaded = GoldSharedStore.loadQuotes()
         if loaded.isEmpty {
             quotes = GoldSharedStore.mockQuotes()
+            isUsingSharedData = false
         } else {
             quotes = loaded
+            isUsingSharedData = true
         }
+        lastWrite = GoldSharedStore.lastWriteDate()
+        lastCount = GoldSharedStore.lastWriteCount()
     }
 }
 
 struct ContentView: View {
     @StateObject private var viewModel = WatchGoldViewModel()
     @Environment(\.scenePhase) private var scenePhase
+    private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
 
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 10) {
+                HStack(spacing: 6) {
+                    Circle()
+                        .fill(viewModel.isUsingSharedData ? Color.green : Color.orange)
+                        .frame(width: 6, height: 6)
+                    Text(viewModel.isUsingSharedData ? "Shared Data" : "Mock Data")
+                        .font(.system(size: 10, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.7))
+                    Spacer()
+                }
+                .padding(.horizontal, 4)
+                .padding(.bottom, 2)
+
+                HStack(spacing: 6) {
+                    Image(systemName: "arrow.clockwise")
+                        .font(.system(size: 9, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.55))
+                    Text(lastWriteText())
+                        .font(.system(size: 9, weight: .medium, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.55))
+                    if viewModel.lastCount > 0 {
+                        Text("(\(viewModel.lastCount))")
+                            .font(.system(size: 9, weight: .medium, design: .rounded))
+                            .foregroundStyle(.white.opacity(0.55))
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal, 4)
+                .padding(.bottom, 6)
+
                 ForEach(viewModel.quotes, id: \.self) { quote in
                     QuoteRow(quote: quote)
                 }
@@ -52,15 +73,17 @@ struct ContentView: View {
             .padding(.vertical, 6)
         }
         .background(Color.black)
-        .onAppear { viewModel.start() }
-        .onDisappear { viewModel.stop() }
-        .onChange(of: scenePhase) {
+        .onAppear { viewModel.refresh() }
+        .onReceive(timer) { _ in
             if scenePhase == .active {
-                viewModel.start()
-            } else {
-                viewModel.stop()
+                viewModel.refresh()
             }
         }
+    }
+
+    private func lastWriteText() -> String {
+        guard let date = viewModel.lastWrite else { return "No Shared Writes" }
+        return date.formatted(date: .omitted, time: .shortened)
     }
 }
 
